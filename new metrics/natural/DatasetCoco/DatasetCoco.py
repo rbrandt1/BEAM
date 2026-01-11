@@ -30,8 +30,8 @@ class DatasetCoco(Dataset):
 
 
 		for folder in self.folders:
-			folder_path_segmented[folder] = "/colab_daan_coco/MyDrive/Colab_daan_coco/DatasetCoco/stuffthingmaps_trainval2017/"+folder   # Folder containing segmentation images
-			folder_path_input_images[folder] = "/colab_daan_coco/MyDrive/Colab_daan_coco/DatasetCoco/"+folder                            # Folder containing input images
+			folder_path_segmented[folder] = "./DatasetCoco/stuffthingmaps_trainval2017/"+folder   # Folder containing segmentation images
+			folder_path_input_images[folder] = "./DatasetCoco/"+folder                            # Folder containing input images
 
 			### Determine the paths of all images ###
 
@@ -51,11 +51,11 @@ class DatasetCoco(Dataset):
 					if len(concepts_in_images) % 100 == 0:
 						print((len(concepts_in_images)/16511)*100,"%")
 			 
-				with open('/colab_daan_coco/MyDrive/Colab_daan_coco/DatasetCoco/concepts_in_images_'+folder+'.npy', 'wb') as f:
+				with open('./DatasetCoco/concepts_in_images_'+folder+'.npy', 'wb') as f:
 					concepts_in_images = np.array(concepts_in_images, dtype="object")
 					np.save(f, concepts_in_images)
 
-			with open('/colab_daan_coco/MyDrive/Colab_daan_coco/DatasetCoco/concepts_in_images_'+folder+'.npy', 'rb') as f:
+			with open('./DatasetCoco/concepts_in_images_'+folder+'.npy', 'rb') as f:
 				concepts_in_images = np.load(f, allow_pickle=True)
 				self.concepts_in_images[folder] = list(concepts_in_images)
 
@@ -92,7 +92,7 @@ class DatasetCoco(Dataset):
 
 
 	def genConceptExample(self, path, folder): # Load concept input image
-		return cv2.imread("/colab_daan_coco/MyDrive/Colab_daan_coco/DatasetCoco/"+folder+"/"+path.split("/")[-1].split(".")[0]+".jpg") 
+		return cv2.imread("./DatasetCoco/"+folder+"/"+path.split("/")[-1].split(".")[0]+".jpg") 
 
 
 	def genConceptExamples(self,folder): # Generate example pairs of image paths and a vector denoting which concepts are in the image
