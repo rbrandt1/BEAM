@@ -1,7 +1,7 @@
 
 # ---------------------- Import Libs ---------------------- #
 
-from dataset_synth import dataset_synth
+from dataset_synth_newGT import dataset_synth_newGT
 
 import tensorflow as tf
 from tensorflow.keras import Model
@@ -52,7 +52,7 @@ def genModel(conceptid):
 
     for channel in range(3):
         for pc in range(12):
-            weigths[0][:,:,channel,pc+channel*12] = dataset_synth.gen_concept_part_weights(pc)
+            weigths[0][:,:,channel,pc+channel*12] = dataset_synth_newGT.gen_concept_part_weights(pc)
             weigths[1][pc+channel*12] = -1.0
          
     model_classifier.get_layer('conv0').set_weights(weigths)
