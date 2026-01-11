@@ -1741,17 +1741,8 @@ def main():
 
     print(df.to_latex(index=True))
 
-    if False:
-      print("********************* Runtime Information *********************")
-
-      !pip list
-      !python --version
-      !nvidia-smi
-      !lscpu
 
 if __name__ == "__main__":
-
-
 
   for settings['turn_gts_binary'] in [False, True]:
 

@@ -1658,14 +1658,6 @@ def main():
     print(df_time.to_latex(index=True))
 
 
-    print("********************* Runtime Information *********************")
-
-    !pip list
-    !python --version
-    !nvidia-smi
-    !lscpu
-
-
 if __name__ == "__main__":
 
   all_xai_methods = [GradCAM,GradCAMPP,Saliency,DeconvNet, GradientInput, GuidedBackprop, IntegratedGradients, SmoothGrad, SquareGrad,VarGrad,Occlusion,Rise,KernelShap,Lime]

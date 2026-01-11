@@ -1486,7 +1486,3 @@ def main():
 if __name__ == "__main__":
   main()
 
-  !pip list
-  !python --version
-  !nvidia-smi
-  !lscpu
