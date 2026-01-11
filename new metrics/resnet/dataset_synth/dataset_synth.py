@@ -1,0 +1,516 @@
+
+import numpy as np
+import random
+
+
+def normalize_explanation(exp):
+   
+    max = np.amax(exp)
+    min = np.amin(exp)
+    
+    if max != 0 or min != 0:
+        if abs(min) > abs(max):
+            exp = exp * 1.0/abs(min)
+        else:
+            exp = exp * 1.0/abs(max)
+    
+    if (np.amin(exp) < -1 or np.amax(exp) > 1) or ((np.amin(exp) != -1 and np.amax(exp) != 1) and not (np.amin(exp) == 0 and np.amax(exp) == 0)):
+        print("ERROR: np.amin(exp) < -1 or np.amax(exp) > 1 ")
+        print(np.amin(exp),np.amax(exp))
+        exit()
+
+    return exp
+    
+def gen_concept_part_weights(id):
+
+    if id == 0:
+        return [[2,-.5,1],[-.5,0,-1],[1,0,-1]] # row 2 is residual,     0,2       1,2
+    if id == 1:
+        return [[0,1,1],[1,-1,-1],[1,0,-1]] # row 2 is residual,     0,2       1,2
+    if id == 2:
+        return [[0,0,1],[0,2,-1],[1,0,-1]] # row 2 is residual,     0,2       1,2
+    if id == 3:
+        return [[1,-.5,2],[-1,0,-.5],[1,0,-1]] # row 2 is residual,     0,0       1,0
+    if id == 4:
+        return [[1,1,0],[-1,-1,1],[1,0,-1]] # row 2 is residual,     0,0       1,0
+    if id == 5:
+        return [[1,0,0],[-1,2,0],[1,0,-1]] # row 2 is residual,     0,0       1,0
+    if id == 6:
+        return [[1,0,-1],[1,0,-.5],[-1,-.5,2]] # row 0 is residual,     1,0       2,0
+    if id == 7:
+        return [[1,0,-1],[1,-1,1],[-1,1,0]]  # row 0 is residual,     1,0       2,0
+    if id == 8:
+        return [[1,0,-1],[1,2,0],[-1,0,0]]  # row 0 is residual,     1,0       2,0
+    if id == 9: 
+        return [[1,0,-1],[-.5,0,1],[2,-.5,-1]]  # row 0 is residual,     1,2       2,2
+    if id == 10:
+        return [[1,0,-1],[1,-1,1],[0,1,-1]]  # row 0 is residual,     1,2       2,2
+    if id == 11:
+        return [[1,0,-1],[0,2,1],[0,0,-1]] # row 0 is residual,     1,2       2,2
+        
+def gen_concept_part_input_exp(id):
+    if id == 0:
+        a =  [[1,0,0],[0,0,0],[.5,1,.5]]
+    if id == 1:
+        a =  [[1,1,0],[1,0,0],[.5,1,.5]]
+    if id == 2:
+        a =  [[1,1,0],[1,1,0],[.5,1,.5]]
+    if id == 3:
+        a =  [[0,0,1],[0,0,0],[.5,1,.5]]
+    if id == 4:
+        a =  [[0,1,1],[0,0,1],[.5,1,.5]]
+    if id == 5:
+        a =  [[0,1,1],[0,1,1],[.5,1,.5]]
+    if id == 6:
+        a =  [[.5,1,.5],[0,0,0],[0,0,1]]
+    if id == 7:
+        a =  [[.5,1,.5],[0,0,1],[0,1,1]]
+    if id == 8:
+        a =  [[.5,1,.5],[0,1,1],[0,1,1]]
+    if id == 9:
+        a =  [[.5,1,.5],[0,0,0],[1,0,0]]
+    if id == 10:
+        a =  [[.5,1,.5],[1,0,0],[1,1,0]]
+    if id == 11:
+        a =  [[.5,1,.5],[1,1,0],[1,1,0]]
+
+    
+    b = gen_concept_part_weights(id)
+
+    return np.array(a), np.array(b)
+        
+
+def gen_concept_part_example(id):
+    
+    inputs, exps = gen_concept_part_input_exp(id)
+
+    return inputs, exps
+
+
+
+     
+def calc_attr_neg_cp(img_0, exp_1, multiplier, enabled):
+
+    if not enabled:
+        assert False
+
+    img_0 = np.array(img_0)
+    exp_1 = np.array(exp_1)
+    
+    total_exp_concept = abs(exp_1).sum()
+    if total_exp_concept == 0:
+        total_exp_concept = 1
+
+    tmp = np.zeros(img_0.shape)
+
+    for y in range(img_0.shape[0]):
+        for x in range(img_0.shape[1]):
+            if len(img_0.shape) == 3:
+                for c in range(img_0.shape[2]):
+                    tmp[y,x,c] = ((- img_0[y,x,c] * exp_1[y,x,c]) + 2 * abs(exp_1[y,x,c])/total_exp_concept) 
+            else:
+                tmp[y,x] = ((- img_0[y,x] * exp_1[y,x]) + 2 * abs(exp_1[y,x])/total_exp_concept) 
+  
+    if np.abs(np.sum(tmp)) > .0000000000001:
+        tmp = tmp / np.sum(tmp)
+    tmp = tmp * multiplier
+
+    return img_0, tmp
+    
+
+    
+def calc_attr_pos_cp(array, multiplier, enabled = True):
+
+    img,exp = array
+
+    if enabled:
+        total_exp_concept = abs(exp).sum()
+        if total_exp_concept == 0:
+            total_exp_concept = 1
+
+        tmp = np.zeros(img.shape)
+
+        for y in range(img.shape[0]):
+            for x in range(img.shape[1]):
+                tmp[y,x] =  ((img[y,x] * exp[y,x])  -1 * abs(exp[y,x])/total_exp_concept )
+
+        tmp = (tmp / (tmp.sum())) * multiplier
+
+        exp = tmp
+
+    return img,exp
+    
+    
+def cncpt_neg(c_expluding, c_id_only):
+
+    tmp = np.zeros((6,6,3))
+    tmp_gt_exp = np.zeros((6,6,3))
+    tmp_gt_concepts = np.zeros((5,6,6,3)).astype(bool) 
+
+    
+
+    if c_id_only[0] == 1:
+
+        # (¬CP6  v  ¬CP9  v  ¬CP3  v  ¬CP0)
+        img_0, _,_ = cncpt(c_expluding, True)
+        _, exp_1,_ = cncpt(c_id_only, False)
+
+        for y in range(2):
+            for x in range(2):
+                tmp[y*3:(y+1)*3,x*3:(x+1)*3,:], tmp_gt_exp[y*3:(y+1)*3,x*3:(x+1)*3,:] = calc_attr_neg_cp(img_0[y*3:(y+1)*3,x*3:(x+1)*3,:], exp_1[y*3:(y+1)*3,x*3:(x+1)*3,:], 1/4 , True) 
+
+    elif c_id_only[0] == 3:
+
+        # ¬CP8  v  ¬CP11
+        img_0, _,_ =  cncpt(c_expluding, True)
+        _, exp_1,_ = cncpt(c_id_only, False)
+
+        for y in range(2):
+            for x in range(2):
+                tmp[y*3:(y+1)*3,x*3:(x+1)*3,:], tmp_gt_exp[y*3:(y+1)*3,x*3:(x+1)*3,:] = calc_attr_neg_cp(img_0[y*3:(y+1)*3,x*3:(x+1)*3,:], exp_1[y*3:(y+1)*3,x*3:(x+1)*3,:], 1/2 , True) 
+
+    else:
+        assert False
+
+
+
+    return tmp, tmp_gt_exp, tmp_gt_concepts
+
+
+
+
+
+def cncpt(arr, enabled = True):
+
+    id = random.choice(arr)
+
+    tmp = np.zeros((6,6,3))
+    tmp_gt_exp = np.zeros((6,6,3))
+    tmp_gt_concepts = np.zeros((5,6,6,3)).astype(bool) 
+
+    if id == 0:
+        
+        items0 = [random.choice([0,1])]
+        items1 = [random.choice([0,1])]
+        items = list(set(items0+items1))
+        
+        if 0 in items:
+            tmp[0:3,0:3,0], tmp_gt_exp[0:3,0:3,0] = calc_attr_pos_cp(gen_concept_part_example(7), (1/2) / len(items) , enabled)
+            tmp[0:3,3:,0],tmp_gt_exp[0:3,3:,0] = calc_attr_pos_cp(gen_concept_part_example(10), (1/2) / len(items) , enabled)
+
+        if 1 in items:
+            tmp[3:,0:3,0],tmp_gt_exp[3:,0:3,0] = calc_attr_pos_cp(gen_concept_part_example(4), (1/2) / len(items) , enabled)
+            tmp[3:,3:,0],tmp_gt_exp[3:,3:,0] = calc_attr_pos_cp(gen_concept_part_example(1), (1/2) / len(items) , enabled)
+            
+
+    if id == 1:
+        tmp[0:3,0:3,0],tmp_gt_exp[0:3,0:3,0] = calc_attr_pos_cp(gen_concept_part_example(6), 1/4 , enabled)
+        tmp[0:3,3:,0],tmp_gt_exp[0:3,3:,0] = calc_attr_pos_cp(gen_concept_part_example(9), 1/4 , enabled)
+        tmp[3:,0:3,0],tmp_gt_exp[3:,0:3,0] = calc_attr_pos_cp(gen_concept_part_example(3), 1/4 , enabled)
+        tmp[3:,3:,0],tmp_gt_exp[3:,3:,0] = calc_attr_pos_cp(gen_concept_part_example(0), 1/4 , enabled)
+  
+    if id == 2:
+        
+        items0 = [random.choice([0,1])]
+        items1 = [random.choice([0,1])]
+        items = list(set(items0+items1))
+        
+        tmp[3:,0:3,2],tmp_gt_exp[3:,0:3,2] = calc_attr_pos_cp(gen_concept_part_example(4), 1/3 , enabled)
+        tmp[3:,3:,2],tmp_gt_exp[3:,3:,2] = calc_attr_pos_cp(gen_concept_part_example(1), 1/3 , enabled)
+        
+        if 0 in items:
+            tmp[0:3,0:3,1],tmp_gt_exp[0:3,0:3,1] = calc_attr_pos_cp(gen_concept_part_example(7), (1/3) / len(items) , enabled)
+
+        if 1 in items:
+            tmp[0:3,3:,1],tmp_gt_exp[0:3,3:,1] = calc_attr_pos_cp(gen_concept_part_example(10), (1/3) / len(items) , enabled)
+            
+            
+    if id == 3: 
+        tmp[0:3,0:3,1], tmp_gt_exp[0:3,0:3,1] = calc_attr_pos_cp(gen_concept_part_example(8), 1/2 , enabled)
+        tmp[0:3,3:,1], tmp_gt_exp[0:3,3:,1] = calc_attr_pos_cp(gen_concept_part_example(11), 1/2, enabled)
+        
+    if id == 4:
+        if random.uniform(0, 1) > 0.5:
+            img_0, exp_0 = gen_concept_part_example(8) 
+            img_1, exp_1 = gen_concept_part_example(11) 
+            tmp[0:3,0:3,1], tmp_gt_exp[0:3,0:3,1] = calc_attr_pos_cp([img_0, exp_0], 1/2, enabled)
+
+            _ , tmp_gt_exp[0:3,3:,1] = calc_attr_neg_cp(np.zeros((3,3)) ,exp_1, 1/2, enabled)
+        else:
+            img_0, exp_0  = gen_concept_part_example(11) 
+            img_1, exp_1 = gen_concept_part_example(8) 
+            tmp[0:3,3:,1], tmp_gt_exp[0:3,3:,1] = calc_attr_pos_cp([img_0, exp_0], 1/2, enabled)
+            _ , tmp_gt_exp[0:3,0:3,1] = calc_attr_neg_cp(np.zeros((3,3)) ,exp_1, 1/2, enabled)
+
+    tmp_gt_concepts[id,:,:,:] = tmp_gt_exp.astype(bool)
+
+    return tmp, tmp_gt_exp, tmp_gt_concepts
+    
+
+
+
+
+def set_values(start_y_idx,start_x_idx,y,x,tmp_concept,tmp,tmp_gt_exp):
+    rangeY = [start_y_idx*32+y*8+1,start_y_idx*32+(y+1)*8]
+    rangeX = [start_x_idx*32+x*8+1,start_x_idx*32+(x+1)*8]
+    tmp[rangeY[0]:rangeY[1],rangeX[0]:rangeX[1],:] = tmp_concept[0]
+    if not tmp_concept[1] is None:
+        tmp_gt_exp[rangeY[0]:rangeY[1],rangeX[0]:rangeX[1],:] = tmp_concept[1]
+
+    return tmp,tmp_gt_exp
+
+
+
+def genSingle(randomval, c_id_only, c_expluding, c, classid):
+
+    tmp = np.zeros((6*3,6*3,3))
+    tmp_gt_exp = np.zeros((6*3,6*3,3))
+    tmp_gt_concepts = np.zeros((5,6*3,6*3,3))
+
+    if classid % 5 == 0:
+    
+        tmp[0:6,0:6,:], tmp_gt_exp[0:6,0:6,:],_ = cncpt(c_id_only)
+        tmp[6:12,0:6,:],_,_ = cncpt(c_expluding)
+        tmp[12:,0:6,:],_,_ = cncpt(c)
+
+        tmp[0:6,6:12,:],_,_ = cncpt(c_expluding)
+        tmp[6:12,6:12,:],_,_ = cncpt(c)
+        tmp[12:,6:12,:],_,_ = cncpt(c)
+
+        tmp[0:6,12:,:],_,_ = cncpt(c_expluding)
+        tmp[6:12,12:,:],_,_ = cncpt(c)
+        tmp[12:,12:,:],_,_ = cncpt(c)
+
+    if classid % 5 == 1:
+ 
+        tmp[0:6,0:6,:],_ ,_ = cncpt(c_expluding)
+        tmp[6:12,0:6,:],tmp_gt_exp[6:12,0:6,:],_ = cncpt(c_id_only)
+        tmp[12:,0:6,:],_,_= cncpt(c)
+
+        tmp[0:6,6:12,:],_,_ = cncpt(c_expluding)
+        tmp[6:12,6:12,:],_,_ = cncpt(c)
+        tmp[12:,6:12,:],_,_ = cncpt(c)
+
+        tmp[0:6,12:,:],_,_ = cncpt(c_expluding)
+        tmp[6:12,12:,:],_,_ = cncpt(c)
+        tmp[12:,12:,:],_,_ = cncpt(c)
+        
+            
+    if classid % 5 == 2:
+
+        tmp[0:6,0:6,:],_,_ = cncpt(c_expluding)
+        tmp[6:12,0:6,:],_,_ = cncpt(c_expluding)
+        tmp[12:,0:6,:],_,_ = cncpt(c)
+
+        tmp[0:6,6:12,:],tmp_gt_exp[0:6,6:12,:],_ = cncpt(c_id_only)
+        tmp_gt_exp[0:6,6:12,:] = tmp_gt_exp[0:6,6:12,:] * 1/2
+        tmp[6:12,6:12,:],_,_ = cncpt(c)
+        tmp[12:,6:12,:],_ ,_ = cncpt(c)
+
+        tmp[0:6,12:,:],tmp_gt_exp[0:6,12:,:],_ = cncpt(c_id_only)
+        tmp_gt_exp[0:6,12:,:] = tmp_gt_exp[0:6,12:,:] * 1/2
+        tmp[6:12,12:,:],_,_ = cncpt(c)
+        tmp[12:,12:,:],_,_= cncpt(c)
+   
+    if classid % 5 == 3:
+        if random.uniform(0, 1) > 0.5:
+               
+            tmp[0:6,0:6,:],_,_ = cncpt(c_expluding)
+            tmp[6:12,0:6,:],_,_ = cncpt(c_expluding)
+            tmp[12:,0:6,:],_,_ = cncpt(c)
+
+
+            tmp[0:6,6:12,:], tmp_gt_exp[0:6,6:12,:],_ = cncpt_neg(c_expluding, c_id_only)
+            tmp_gt_exp[0:6,6:12,:] = tmp_gt_exp[0:6,6:12,:] * 1/2
+            tmp[6:12,6:12,:],_ ,_ = cncpt(c)
+            tmp[12:,6:12,:],_,_ = cncpt(c)
+
+
+            tmp[0:6,12:,:],tmp_gt_exp[0:6,12:,:],_ = cncpt(c_id_only)
+            tmp_gt_exp[0:6,12:,:] = tmp_gt_exp[0:6,12:,:] * 1/2
+            tmp[6:12,12:,:],_,_ = cncpt(c)
+            tmp[12:,12:,:],_ ,_ =cncpt(c)
+
+        else:
+
+            tmp[0:6,0:6,:],_,_ = cncpt(c_expluding)
+            tmp[6:12,0:6,:],_,_ = cncpt(c_expluding)
+            tmp[12:,0:6,:],_ ,_ = cncpt(c)
+
+
+            tmp[0:6,6:12,:],tmp_gt_exp[0:6,6:12,:],_ = cncpt(c_id_only)
+            tmp_gt_exp[0:6,6:12,:] = tmp_gt_exp[0:6,6:12,:] * 1/2
+            tmp[6:12,6:12,:],_,_ = cncpt(c)
+            tmp[12:,6:12,:],_,_ = cncpt(c)
+ 
+
+            tmp[0:6,12:,:] , tmp_gt_exp[0:6,12:,:],_ = cncpt_neg(c_expluding, c_id_only)
+            tmp_gt_exp[0:6,12:,:] = tmp_gt_exp[0:6,12:,:] * 1/2
+             
+            tmp[6:12,12:,:],_,_= cncpt(c)
+            tmp[12:,12:,:],_ ,_ = cncpt(c)
+
+    if classid % 5 == 4:
+
+        tmp[0:6,0:6,:] , tmp_gt_exp[0:6,0:6,:],_ = cncpt_neg(c_expluding, c_id_only)
+        tmp_gt_exp[0:6,0:6,:] = tmp_gt_exp[0:6,0:6,:] * 1/4
+        tmp[6:12,0:6,:] , tmp_gt_exp[6:12,0:6,:],_ = cncpt_neg(c_expluding, c_id_only)
+        tmp_gt_exp[6:12,0:6,:] = tmp_gt_exp[6:12,0:6,:] * 1/4
+        tmp[12:,0:6,:],_ ,_ = cncpt(c)
+        
+
+
+        tmp[0:6,6:12,:] , tmp_gt_exp[0:6,6:12,:],_ = cncpt_neg(c_expluding, c_id_only)
+        tmp_gt_exp[0:6,6:12,:] = tmp_gt_exp[0:6,6:12,:] * 1/4
+        tmp[6:12,6:12,:],_,_ = cncpt(c)
+        tmp[12:,6:12,:],_,_ = cncpt(c)
+
+
+
+        tmp[0:6,12:,:] , tmp_gt_exp[0:6,12:,:],_ = cncpt_neg(c_expluding, c_id_only)
+        tmp_gt_exp[0:6,12:,:] = tmp_gt_exp[0:6,12:,:] * 1/4
+        tmp[6:12,12:,:],_,_ = cncpt(c)
+        tmp[12:,12:,:],_,_ = cncpt(c)
+
+    return tmp, tmp_gt_exp
+
+
+def gen_class_examples(conceptid, classid, numexamples):
+
+    output = []
+    gt_exp = []
+    gt_concepts = []
+    
+    c = [0,1,2,3,4] # concepten
+    c_id_only = [conceptid]
+    c_expluding = [0,1,2,3,4]
+    c_expluding.pop(conceptid)
+    
+
+        
+    for i in range(numexamples):
+        
+        tmp = np.zeros((224,224,3))
+        tmp_gt_exp = np.zeros((224,224,3))
+        tmp_gt_concepts = np.zeros((5,224,224,3))
+    
+        for start_x_idx in range(1,7):
+            for start_y_idx in range(1,7): 
+
+                randomval = random.uniform(0, 1) > 0.5
+                
+                img, exp, = genSingle(randomval, c_id_only, c_expluding, c, classid)
+
+
+                for x in range(3):
+                    for y in range(3):
+
+                        img_tmp = img[y*6:(y+1)*6,x*6:(x+1)*6,:]
+                        exp_tmp = exp[y*6:(y+1)*6,x*6:(x+1)*6,:]
+
+                        converted_img = np.zeros((7,7,3))
+                        converted_exp = np.zeros((7,7,3))
+
+                        converted_img[0:3,0:3,:] = img_tmp[0:3,0:3,:]
+                        converted_img[4:,0:3,:] = img_tmp[3:,0:3,:]
+                        converted_img[0:3,4:,:] = img_tmp[0:3,3:,:]
+                        converted_img[4:,4:,:] = img_tmp[3:,3:,:]
+
+                        converted_exp[0:3,0:3,:] = exp_tmp[0:3,0:3,:]
+                        converted_exp[4:,0:3,:] = exp_tmp[3:,0:3,:]
+                        converted_exp[0:3,4:,:] = exp_tmp[0:3,3:,:]
+                        converted_exp[4:,4:,:] = exp_tmp[3:,3:,:]
+
+                        if start_x_idx == 6 or start_y_idx == 6:
+                            tmp,tmp_gt_exp = set_values(start_y_idx,start_x_idx,y,x,[ converted_img,0],tmp,tmp_gt_exp)
+                        else:
+                            tmp,tmp_gt_exp = set_values(start_y_idx,start_x_idx,y,x,[ converted_img, converted_exp ],tmp,tmp_gt_exp)
+
+
+        output.append(tmp)
+        
+        gt_exp.append(tmp_gt_exp)
+
+        gt_concepts.append(tmp_gt_concepts.astype(bool))
+            
+    return np.array(output), np.array(gt_exp), np.array(gt_concepts)
+
+
+
+
+
+def convert_to_2D(explanation): 
+    output = np.zeros((explanation.shape[0], explanation.shape[1]))
+    for y in range(explanation.shape[0]):
+        for x in range(explanation.shape[1]):
+            mostExtremeValue = 0.0
+
+            for c in range(3):
+                if abs(explanation[y,x,c]) > abs(mostExtremeValue):
+                    mostExtremeValue = explanation[y,x,c]
+                    
+            output[y,x] = mostExtremeValue
+            
+    return output
+
+
+
+def generate(num_examples_per_class, conceptid):
+    
+    print("GT Final")
+    
+    data_x_test, data_y_test, data_gt_explanation_test3D, data_gt_explanation_concepts_test3D, data_gt_residual_test3D , data_gt_explanation_test, data_gt_explanation_concepts_test, data_gt_residual_test = [],[],[],[],[],[],[],[]
+
+    for classid in range(5): 
+    
+        # Filter out ambiguous GTs
+        if conceptid == 0 or conceptid == 2 or conceptid == 4:
+            if classid == 3 or classid == 4:
+                continue
+              
+        examples, data_gt_explanation, data_gt_concepts = gen_class_examples(conceptid, classid, num_examples_per_class)
+        
+        vec = np.zeros(2048)
+        vec[classid] = 1
+        
+        
+        # normalize explanations
+        for i in range(len(data_gt_explanation)):
+            data_gt_explanation[i] = normalize_explanation(data_gt_explanation[i]) 
+        
+        
+        for example, explanation, concepts in zip(examples, data_gt_explanation, data_gt_concepts):
+        
+            data_x_test.append(example)
+            
+            data_y_test.append(vec)
+            
+            
+            data_gt_explanation_test3D.append(explanation)
+            data_gt_explanation_test.append(convert_to_2D(explanation))
+            
+            
+            tmp = np.zeros((36,36,3)).astype(bool)
+            for x in range(36):
+                for y in range(36):
+                    for c in range(3):
+                        if explanation[y,x,c] == 0:
+                            tmp[y,x,c] = True
+            data_gt_residual_test3D.append(tmp)
+            data_gt_residual_test.append(np.amin(tmp,axis=-1)) # boolean, else convert_to_2D(explanation) would have to be used
+
+
+            data_gt_explanation_concepts_test3D.append(concepts)
+            data_gt_explanation_concepts_test.append(np.amax(concepts,axis=-1)) # boolean, else convert_to_2D(explanation) would have to be used
+           
+            
+
+        
+    data_x_test = np.array(data_x_test)
+    data_y_test = np.array(data_y_test)
+    data_gt_explanation_test = np.array(data_gt_explanation_test)
+    data_gt_explanation_test3D = np.array(data_gt_explanation_test3D)
+
+    
+    return {'test': {'x':data_x_test, 'y':data_y_test, 'gt_explanation':data_gt_explanation_test,'gt_explanation3D':data_gt_explanation_test3D}}
+   

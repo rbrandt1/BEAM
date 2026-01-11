@@ -1,0 +1,2220 @@
+
+(daan-gpu) C:\Users\remib\Downloads\Final resnet\new metrics\resnet>python main.py
+2026-01-09 11:17:01.204190: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+RuntimeError: module compiled against API version 0xe but this version of numpy is 0xd
+2026-01-09 11:17:04.395038: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library nvcuda.dll
+2026-01-09 11:17:04.437220: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce RTX 2060 computeCapability: 7.5
+coreClock: 1.77GHz coreCount: 30 deviceMemorySize: 6.00GiB deviceMemoryBandwidth: 312.97GiB/s
+2026-01-09 11:17:04.437389: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2026-01-09 11:17:04.442469: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2026-01-09 11:17:04.447242: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2026-01-09 11:17:04.448620: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2026-01-09 11:17:04.453375: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2026-01-09 11:17:04.455984: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2026-01-09 11:17:04.465868: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2026-01-09 11:17:04.466033: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2026-01-09 11:17:04.475363: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x173de169db0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2026-01-09 11:17:04.475475: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2026-01-09 11:17:04.475772: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce RTX 2060 computeCapability: 7.5
+coreClock: 1.77GHz coreCount: 30 deviceMemorySize: 6.00GiB deviceMemoryBandwidth: 312.97GiB/s
+2026-01-09 11:17:04.475858: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2026-01-09 11:17:04.475920: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2026-01-09 11:17:04.475983: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2026-01-09 11:17:04.476069: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2026-01-09 11:17:04.476174: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2026-01-09 11:17:04.476253: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2026-01-09 11:17:04.476315: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2026-01-09 11:17:04.476395: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2026-01-09 11:17:05.237403: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2026-01-09 11:17:05.237542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0
+2026-01-09 11:17:05.237853: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N
+2026-01-09 11:17:05.238122: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 4687 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce RTX 2060, pci bus id: 0000:01:00.0, compute capability: 7.5)
+2026-01-09 11:17:05.241533: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x1739622b070 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2026-01-09 11:17:05.241626: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA GeForce RTX 2060, Compute Capability 7.5
+******************* RUN:  2  *******************
+*** conceptid  0  ***
+GT Final
+# ---------------------- Define Model ---------------------- #
+block_id 17
+WARNING:tensorflow:Layer lambda is casting an input tensor from dtype float64 to the layer's dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because its dtype defaults to floatx.
+
+If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
+
+To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx('float64')`. To change just this layer, pass dtype='float64' to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
+
+WARNING:tensorflow:Layer lambda_1 is casting an input tensor from dtype float64 to the layer's dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because its dtype defaults to floatx.
+
+If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
+
+To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx('float64')`. To change just this layer, pass dtype='float64' to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
+
+# ---------------------- Set weights of model ---------------------- #
+2026-01-09 11:17:13.087647: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2026-01-09 11:17:14.686395: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: Invoking GPU asm compilation is supported on Cuda non-Windows platforms only
+Relying on driver to perform ptx compilation.
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2026-01-09 11:17:14.754330: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+1/1 [==============================] - 0s 998us/step - loss: 0.0019 - acc: 1.0000
+***  GradCAM  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GradCAMPP  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Saliency  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  DeconvNet  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GradientInput  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GuidedBackprop  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  IntegratedGradients  ***
+WARNING:tensorflow:5 out of the last 11 calls to <function gradient at 0x00000173D7491310> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  SmoothGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  SquareGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  VarGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  KernelShap  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Lime  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Occlusion  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Rise  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+*** conceptid  1  ***
+GT Final
+# ---------------------- Define Model ---------------------- #
+block_id 17
+WARNING:tensorflow:Layer lambda is casting an input tensor from dtype float64 to the layer's dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because its dtype defaults to floatx.
+
+If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
+
+To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx('float64')`. To change just this layer, pass dtype='float64' to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
+
+WARNING:tensorflow:Layer lambda_1 is casting an input tensor from dtype float64 to the layer's dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because its dtype defaults to floatx.
+
+If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
+
+To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx('float64')`. To change just this layer, pass dtype='float64' to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
+
+# ---------------------- Set weights of model ---------------------- #
+1/1 [==============================] - 0s 999us/step - loss: 0.0018 - acc: 1.0000
+***  GradCAM  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GradCAMPP  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Saliency  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  DeconvNet  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GradientInput  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GuidedBackprop  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  IntegratedGradients  ***
+WARNING:tensorflow:5 out of the last 83 calls to <function gradient at 0x00000173D7491310> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:5 out of the last 11 calls to <function gradient at 0x00000173D7491310> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  SmoothGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  SquareGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  VarGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  KernelShap  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Lime  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Occlusion  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Rise  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+*** conceptid  2  ***
+GT Final
+# ---------------------- Define Model ---------------------- #
+block_id 17
+WARNING:tensorflow:Layer lambda is casting an input tensor from dtype float64 to the layer's dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because its dtype defaults to floatx.
+
+If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
+
+To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx('float64')`. To change just this layer, pass dtype='float64' to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
+
+WARNING:tensorflow:Layer lambda_1 is casting an input tensor from dtype float64 to the layer's dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because its dtype defaults to floatx.
+
+If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
+
+To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx('float64')`. To change just this layer, pass dtype='float64' to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
+
+# ---------------------- Set weights of model ---------------------- #
+1/1 [==============================] - 0s 2ms/step - loss: 0.0019 - acc: 1.0000
+***  GradCAM  ***
+WARNING:tensorflow:5 out of the last 5 calls to <function GradCAM._gradient at 0x00000173D74980D0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GradCAMPP  ***
+WARNING:tensorflow:6 out of the last 6 calls to <function GradCAM._gradient at 0x00000173D74980D0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Saliency  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  DeconvNet  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GradientInput  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GuidedBackprop  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  IntegratedGradients  ***
+WARNING:tensorflow:5 out of the last 139 calls to <function gradient at 0x00000173D7491310> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:5 out of the last 11 calls to <function gradient at 0x00000173D7491310> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  SmoothGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  SquareGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  VarGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  KernelShap  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Lime  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Occlusion  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Rise  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+*** conceptid  3  ***
+GT Final
+# ---------------------- Define Model ---------------------- #
+block_id 17
+WARNING:tensorflow:Layer lambda is casting an input tensor from dtype float64 to the layer's dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because its dtype defaults to floatx.
+
+If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
+
+To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx('float64')`. To change just this layer, pass dtype='float64' to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
+
+WARNING:tensorflow:Layer lambda_1 is casting an input tensor from dtype float64 to the layer's dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because its dtype defaults to floatx.
+
+If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
+
+To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx('float64')`. To change just this layer, pass dtype='float64' to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
+
+# ---------------------- Set weights of model ---------------------- #
+1/1 [==============================] - 0s 998us/step - loss: 0.0018 - acc: 1.0000
+***  GradCAM  ***
+WARNING:tensorflow:7 out of the last 7 calls to <function GradCAM._gradient at 0x00000173D74980D0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GradCAMPP  ***
+WARNING:tensorflow:8 out of the last 8 calls to <function GradCAM._gradient at 0x00000173D74980D0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Saliency  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  DeconvNet  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GradientInput  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GuidedBackprop  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  IntegratedGradients  ***
+WARNING:tensorflow:5 out of the last 83 calls to <function gradient at 0x00000173D7491310> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:5 out of the last 11 calls to <function gradient at 0x00000173D7491310> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  SmoothGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  SquareGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  VarGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  KernelShap  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Lime  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Occlusion  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Rise  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+*** conceptid  4  ***
+GT Final
+# ---------------------- Define Model ---------------------- #
+block_id 17
+WARNING:tensorflow:Layer lambda is casting an input tensor from dtype float64 to the layer's dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because its dtype defaults to floatx.
+
+If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
+
+To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx('float64')`. To change just this layer, pass dtype='float64' to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
+
+WARNING:tensorflow:Layer lambda_1 is casting an input tensor from dtype float64 to the layer's dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because its dtype defaults to floatx.
+
+If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
+
+To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx('float64')`. To change just this layer, pass dtype='float64' to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
+
+# ---------------------- Set weights of model ---------------------- #
+WARNING:tensorflow:5 out of the last 5 calls to <function Model.make_test_function.<locals>.test_function at 0x0000017628994040> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+1/1 [==============================] - 0s 2ms/step - loss: 0.0019 - acc: 1.0000
+***  GradCAM  ***
+WARNING:tensorflow:9 out of the last 9 calls to <function GradCAM._gradient at 0x00000173D74980D0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GradCAMPP  ***
+WARNING:tensorflow:10 out of the last 10 calls to <function GradCAM._gradient at 0x00000173D74980D0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Saliency  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  DeconvNet  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GradientInput  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  GuidedBackprop  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  IntegratedGradients  ***
+WARNING:tensorflow:5 out of the last 139 calls to <function gradient at 0x00000173D7491310> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+WARNING:tensorflow:5 out of the last 11 calls to <function gradient at 0x00000173D7491310> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/tutorials/customization/performance#python_or_tensor_args and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  SmoothGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  SquareGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  VarGrad  ***
+3D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  KernelShap  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Lime  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Occlusion  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+***  Rise  ***
+2D explanations
+Deletion
+Insertion
+CosSim
+SSIM
+CONCISSENESS
+F1
+MAE
+IoU
+Precision
+Recall
+Energy-Based Pointing Game
+Relevance Rank Accuracy
+Soft Precision abs
+Soft Recall abs
+Soft F1 abs
+Soft Precision pos
+Soft Recall pos
+Soft F1 pos
+Soft Precision neg
+Soft Recall neg
+Soft F1 neg
+Attention Percentage Contributing
+Attention Percentage Non-Contributing
+our metrics
+saving images...
+!!! NOT saving all images... !!!
+main.py:1206: FutureWarning: In future versions `DataFrame.to_latex` is expected to utilise the base implementation of `Styler.to_latex` for formatting and rendering. The arguments signature may therefore change. It is recommended instead to use `DataFrame.style.to_latex` which also contains additional functionality.
+  print(df.to_latex(index=True))
+\begin{tabular}{lrrrrrrrrrrrrrr}
+\toprule
+{} &     GradCAM &   GradCAMPP &     Saliency &    DeconvNet &  GradientInput &  GuidedBackprop &  IntegratedGradients &  SmoothGrad &  SquareGrad &     VarGrad &   KernelShap &         Lime &     Occlusion &          Rise \\
+\midrule
+Deletion     &    0.007456 &    0.007456 &     0.007456 &     0.007456 &       0.007456 &        0.007456 &             0.010037 &    0.007456 &    0.007456 &    0.007456 &     0.007456 &     0.007456 &      0.007456 &      0.007456 \\
+Insertion    &    0.008760 &    0.008760 &     0.008162 &     0.014627 &       0.008162 &        0.010471 &             0.010661 &    0.011911 &    0.016800 &    0.016664 &     0.007809 &     0.008162 &      0.016990 &      0.008162 \\
+CosSim       &    0.031802 &    0.031802 &     0.000000 &     0.128357 &       0.000000 &        0.265717 &             0.399286 &    0.258428 &    0.130933 &    0.119915 &     0.018165 &     0.000719 &      0.238394 &      0.007085 \\
+\_CosSim      &    0.031802 &    0.031802 &     0.000000 &     0.113899 &       0.000000 &        0.247798 &             0.018974 &    0.205249 &    0.097090 &    0.087069 &     0.018165 &    -0.000719 &      0.238394 &      0.007085 \\
+SSIM         &    0.169144 &    0.169144 &     0.922523 &     0.855319 &       0.972285 &        0.972995 &             0.971396 &    0.960548 &    0.965816 &    0.963364 &     0.082200 &     0.856477 &      0.846733 &      0.854620 \\
+Conciseness  &    0.138297 &    0.138297 &     0.999980 &     0.949688 &       0.999980 &        0.997836 &             0.997402 &    0.924113 &    0.924066 &    0.923513 &     0.039999 &     0.919982 &      0.598932 &      0.919982 \\
+F1           &    0.028259 &    0.028259 &     0.000000 &     0.074251 &       0.000000 &        0.282061 &             0.254727 &    0.088346 &    0.087794 &    0.089685 &     0.025077 &     0.005792 &      0.227011 &      0.005792 \\
+MAE          &    0.371409 &    0.371409 &     0.004458 &     0.010874 &       0.001486 &        0.001564 &             0.001568 &    0.002621 &    0.001923 &    0.002066 &     0.196167 &     0.027625 &      0.089517 &      0.083619 \\
+IoU          &    0.014493 &    0.014493 &     0.000000 &     0.039041 &       0.000000 &        0.194412 &             0.154854 &    0.046764 &    0.046439 &    0.047556 &     0.012752 &     0.003029 &      0.138389 &      0.003029 \\
+PR           &    0.014523 &    0.014523 &     0.000000 &     0.041829 &       0.000000 &        0.411103 &             0.325390 &    0.048452 &    0.048092 &    0.049257 &     0.012752 &     0.003029 &      0.216656 &      0.003029 \\
+RE           &    0.879333 &    0.879333 &     0.000000 &     0.497792 &       0.000000 &        0.274206 &             0.247629 &    0.742489 &    0.745770 &    0.749443 &     0.960000 &     0.080000 &      0.626418 &      0.080000 \\
+EBPG         &    0.018490 &    0.018490 &     0.000000 &     0.057202 &       0.000000 &        0.464020 &             0.524055 &    0.269049 &    0.262472 &    0.219379 &     0.013268 &     0.003096 &      0.375749 &      0.003029 \\
+RRA          &    0.134699 &    0.134699 &     1.000000 &     0.071412 &       1.000000 &        0.920430 &             0.787729 &    0.334179 &    0.292861 &    0.252721 &     0.056772 &     0.924371 &      0.643531 &      0.923686 \\
+soft\_PR\_abs  &    0.018490 &    0.018490 &     0.000000 &     0.057202 &       0.000000 &        0.464020 &             0.524055 &    0.269049 &    0.262472 &    0.219379 &     0.013268 &     0.003096 &      0.375749 &      0.003029 \\
+soft\_RE\_abs  &    0.479443 &    0.479443 &     0.000000 &     0.137889 &       0.000000 &        0.089330 &             0.048608 &    0.102793 &    0.042053 &    0.042696 &     0.203806 &     0.024645 &      0.439259 &      0.080000 \\
+soft\_F1\_abs  &    0.034162 &    0.034162 &     0.000000 &     0.067746 &       0.000000 &        0.136188 &             0.085623 &    0.127635 &    0.064965 &    0.061828 &     0.024429 &     0.005424 &      0.359869 &      0.005792 \\
+soft\_PR\_pos  &    0.010590 &    0.010590 &     0.000000 &     0.046518 &       0.000000 &        0.373426 &             0.332675 &    0.207623 &    0.141922 &    0.118348 &     0.007803 &     0.002866 &      0.179080 &      0.002840 \\
+soft\_RE\_pos  &    0.479064 &    0.479064 &     0.000000 &     0.142661 &       0.000000 &        0.094070 &             0.046531 &    0.099209 &    0.048272 &    0.049022 &     0.138426 &     0.010459 &      0.475038 &      0.080000 \\
+soft\_F1\_pos  &    0.019429 &    0.019429 &     0.000000 &     0.057155 &       0.000000 &        0.135020 &             0.077774 &    0.117456 &    0.059594 &    0.056178 &     0.014361 &     0.004365 &      0.236588 &      0.005443 \\
+soft\_PR\_neg  &    1.000000 &    1.000000 &     1.000000 &     0.040513 &       1.000000 &        0.579352 &             0.391056 &    0.207855 &    1.000000 &    1.000000 &     0.045580 &     0.920201 &      0.400000 &      1.000000 \\
+soft\_RE\_neg  &    0.000000 &    0.000000 &     0.000000 &     0.094691 &       0.000000 &        0.067540 &             0.008602 &    0.076363 &    0.000000 &    0.000000 &     0.080150 &     0.013708 &      0.000000 &      0.000000 \\
+soft\_F1\_neg  &    0.000000 &    0.000000 &     0.000000 &     0.051259 &       0.000000 &        0.106557 &             0.016316 &    0.094873 &    0.000000 &    0.000000 &     0.010126 &     0.000395 &      0.000000 &      0.000000 \\
+\_soft\_PR\_abs &    0.005245 &    0.005245 &     0.000000 &     0.025674 &       0.000000 &        0.216131 &             0.391731 &    0.124576 &    0.147012 &    0.126275 &     0.004400 &     0.000547 &      0.179559 &      0.000508 \\
+\_soft\_RE\_abs &    0.479671 &    0.479671 &     0.000000 &     0.183976 &       0.000000 &        0.112652 &             0.117021 &    0.124090 &    0.054419 &    0.061506 &     0.218867 &     0.025436 &      0.606163 &      0.080000 \\
+\_soft\_F1\_abs &    0.010301 &    0.010301 &     0.000000 &     0.041463 &       0.000000 &        0.123137 &             0.164677 &    0.101523 &    0.063366 &    0.064797 &     0.008569 &     0.001069 &      0.261773 &      0.001009 \\
+\_soft\_PR\_pos &    0.003635 &    0.003635 &     0.000000 &     0.030211 &       0.000000 &        0.260877 &             0.250997 &    0.145750 &    0.103509 &    0.086639 &     0.004146 &     0.000436 &      0.143542 &      0.000419 \\
+\_soft\_RE\_pos &    0.479164 &    0.479164 &     0.000000 &     0.192836 &       0.000000 &        0.122462 &             0.073259 &    0.119795 &    0.058014 &    0.063995 &     0.168201 &     0.010702 &      0.698589 &      0.080000 \\
+\_soft\_F1\_pos &    0.007174 &    0.007174 &     0.000000 &     0.047906 &       0.000000 &        0.141582 &             0.104667 &    0.107450 &    0.057365 &    0.056513 &     0.008031 &     0.000834 &      0.229122 &      0.000833 \\
+\_soft\_PR\_neg &    1.000000 &    1.000000 &     1.000000 &     0.009738 &       1.000000 &        0.265844 &             0.256923 &    0.048392 &    1.000000 &    1.000000 &     0.041248 &     0.920113 &      0.400000 &      1.000000 \\
+\_soft\_RE\_neg &    0.000000 &    0.000000 &     0.000000 &     0.114073 &       0.000000 &        0.074868 &             0.018124 &    0.079275 &    0.000000 &    0.000000 &     0.085888 &     0.016617 &      0.000000 &      0.000000 \\
+\_soft\_F1\_neg &    0.000000 &    0.000000 &     0.000000 &     0.017387 &       0.000000 &        0.070108 &             0.029399 &    0.050969 &    0.000000 &    0.000000 &     0.002445 &     0.000225 &      0.000000 &      0.000000 \\
+Atten\_C      &    0.018490 &    0.018490 &     0.000000 &     0.057202 &       0.000000 &        0.464020 &             0.524055 &    0.269049 &    0.262472 &    0.219379 &     0.013268 &     0.003096 &      0.375749 &      0.003029 \\
+Atten\_NC     &    0.981510 &    0.981510 &     1.000000 &     0.942798 &       1.000000 &        0.535980 &             0.475945 &    0.730951 &    0.737528 &    0.780621 &     0.986732 &     0.996904 &      0.624251 &      0.996971 \\
+cpa!=        &    0.024628 &    0.024628 &     0.000000 &     0.169375 &       0.000000 &        0.585602 &             0.705465 &    0.648360 &    0.821054 &    0.784245 &     0.046356 &     0.007111 &      0.326999 &      0.000528 \\
+cpl!=        &    0.599098 &    0.599098 &     0.686341 &     0.740884 &       0.686341 &        0.715733 &             0.732935 &    0.734036 &    0.717574 &    0.720669 &     0.748494 &     0.681800 &      0.620988 &      0.634194 \\
+cor!=        &    0.311863 &    0.311863 &     0.343171 &     0.455130 &       0.343171 &        0.650667 &             0.719200 &    0.691198 &    0.769314 &    0.752457 &     0.397425 &     0.344455 &      0.473994 &      0.317361 \\
+cpa>         &    0.015737 &    0.015737 &     0.000000 &     0.099908 &       0.000000 &        0.440289 &             0.448557 &    0.425439 &    0.483066 &    0.452661 &     0.021573 &     0.007834 &      0.193472 &      0.000435 \\
+cpl>         &    0.590065 &    0.590065 &     0.526768 &     0.633056 &       0.526768 &        0.595794 &             0.556791 &    0.600208 &    0.572339 &    0.573518 &     0.564900 &     0.511272 &      0.721598 &      0.471903 \\
+cor>         &    0.302901 &    0.302901 &     0.263384 &     0.366482 &       0.263384 &        0.518042 &             0.502674 &    0.512823 &    0.527703 &    0.513089 &     0.293236 &     0.259553 &      0.457535 &      0.236169 \\
+cpa<         &    1.000000 &    1.000000 &     1.000000 &     0.145586 &       1.000000 &        0.731081 &             0.482537 &    0.491478 &    1.000000 &    1.000000 &     0.064813 &     0.920352 &      0.400000 &      1.000000 \\
+cpl<         &    0.339273 &    0.339273 &     0.776833 &     0.750630 &       0.776833 &        0.757291 &             0.777039 &    0.759199 &    0.738557 &    0.738990 &     0.681580 &     0.774912 &      0.430006 &      0.731772 \\
+cor<         &    0.669637 &    0.669637 &     0.888417 &     0.448108 &       0.888417 &        0.744186 &             0.629788 &    0.625338 &    0.869279 &    0.869495 &     0.373196 &     0.847632 &      0.415003 &      0.865886 \\
+cor\_nosign   &    0.311863 &    0.311863 &     0.343171 &     0.455130 &       0.343171 &        0.650667 &             0.719200 &    0.691198 &    0.769314 &    0.752457 &     0.397425 &     0.344455 &      0.473994 &      0.317361 \\
+cor\_sign     &    0.486269 &    0.486269 &     0.575900 &     0.407295 &       0.575900 &        0.631114 &             0.566231 &    0.569081 &    0.698491 &    0.691292 &     0.333216 &     0.553592 &      0.436269 &      0.551028 \\
+Time         &  492.822409 &  501.745440 &  1254.330126 &  1318.908113 &      24.365927 &     1552.521578 &          1853.286689 &  537.855775 &  518.062766 &  526.954352 &  4652.086401 &  1440.998176 &  26672.053871 &  15918.242439 \\
+\bottomrule
+\end{tabular}
+
+
+
+
+main.py:1215: FutureWarning: In future versions `DataFrame.to_latex` is expected to utilise the base implementation of `Styler.to_latex` for formatting and rendering. The arguments signature may therefore change. It is recommended instead to use `DataFrame.style.to_latex` which also contains additional functionality.
+  print(df_time.to_latex(index=True))
+\begin{tabular}{lrrrrrrrrrrrrrr}
+\toprule
+{} &     GradCAM &   GradCAMPP &   Saliency &   DeconvNet &  GradientInput &  GuidedBackprop &  IntegratedGradients &  SmoothGrad &  SquareGrad &    VarGrad &  KernelShap &       Lime &  Occlusion &       Rise \\
+\midrule
+Deletion     &  580.048590 &  138.669513 &  95.201327 &  108.739249 &     105.938298 &       97.498725 &            93.647420 &   96.758696 &   97.303677 &  96.663764 &   95.106592 &  93.531831 &  95.776059 &  95.401818 \\
+Insertion    &   96.906242 &   99.606244 &  91.892589 &   95.501642 &      91.860275 &       92.999802 &            92.300638 &   94.030857 &   96.130133 &  96.780205 &   94.264024 &  94.955126 &  94.020596 &  97.299252 \\
+CosSim       &    0.426248 &    0.306568 &   0.499404 &    0.643104 &       0.551462 &        0.637560 &             0.743745 &    0.638765 &    0.673736 &   0.661287 &    0.408405 &   0.493091 &   0.359713 &   0.492382 \\
+\_CosSim      &    0.477346 &    0.587241 &   0.465755 &    0.825561 &       0.880458 &        0.972071 &             0.891994 &    0.892137 &    0.785262 &   0.918239 &    0.433381 &   0.531448 &   0.398757 &   0.521100 \\
+SSIM         &    5.181882 &    5.234938 &   4.168491 &   15.357405 &      15.264060 &       14.917870 &            14.837888 &   15.596231 &   16.182785 &  16.701994 &    5.674677 &   4.928163 &   5.567592 &   5.461140 \\
+Conciseness  &    0.039978 &    0.000000 &   0.106484 &    0.212460 &       0.280015 &        0.172885 &             0.107129 &    0.039997 &    0.279655 &   0.212962 &    0.106265 &   0.066630 &   0.000000 &   0.040197 \\
+F1           &   13.852154 &   13.706179 &  13.426549 &   42.901761 &      40.170619 &       43.382063 &            42.622868 &   42.276713 &   41.637685 &  43.194602 &   13.811515 &  13.785448 &  14.345179 &  14.745051 \\
+MAE          &    0.638949 &    0.705427 &   0.639470 &    2.610652 &       2.264029 &        2.251164 &             1.864802 &    2.531242 &    2.078492 &   2.369973 &    0.639130 &   0.785084 &   0.839609 &   0.665776 \\
+IoU          &   13.851617 &   13.266570 &  14.092124 &   41.716407 &      41.411066 &       40.717462 &            40.384499 &   42.382746 &   42.702634 &  42.755855 &   13.958511 &  14.105838 &  14.517736 &  14.491946 \\
+PR           &   13.758281 &   13.345954 &  13.998868 &   42.955497 &      39.958264 &       40.664031 &            40.196953 &   40.917619 &   42.622598 &  43.834108 &   13.586121 &  13.679908 &  14.171836 &  14.184796 \\
+RE           &   14.398279 &   13.226636 &  13.917586 &   41.862659 &      39.917596 &       41.849709 &            40.798941 &   41.702741 &   41.797520 &  41.703631 &   13.532057 &  13.823964 &  13.998597 &  14.571622 \\
+EBPG         &    0.424703 &    0.491861 &   0.359707 &    0.745888 &       0.773522 &        0.718629 &             0.624765 &    0.612211 &    0.639687 &   0.532516 &    0.385186 &   0.427078 &   0.318756 &   0.492093 \\
+RRA          &    0.679210 &    0.573130 &   0.466010 &    1.464227 &       1.810907 &        1.571007 &             1.625417 &    1.718270 &    1.731389 &   1.783841 &    0.638568 &   0.612497 &   0.679731 &   0.679213 \\
+soft\_PR\_abs  &    0.359634 &    0.292648 &   0.426108 &    0.785268 &       0.639222 &        0.931451 &             0.917829 &    0.743640 &    0.744985 &   0.852531 &    0.252654 &   0.319707 &   0.359691 &   0.319618 \\
+soft\_RE\_abs  &    0.425994 &    0.360047 &   0.359586 &    1.092345 &       1.131639 &        0.945444 &             1.038739 &    0.905609 &    0.985378 &   1.038949 &    0.425828 &   0.425692 &   0.399462 &   0.425943 \\
+soft\_F1\_abs  &    0.532799 &    0.466223 &   0.572465 &    1.104956 &       1.343902 &        1.398563 &             1.370675 &    1.357905 &    1.278254 &   1.384112 &    0.571760 &   0.465803 &   0.532023 &   0.532786 \\
+soft\_PR\_pos  &    0.453625 &    0.253029 &   0.399752 &    0.852400 &       0.691951 &        0.785615 &             0.786257 &    0.758934 &    0.931641 &   0.719407 &    0.426092 &   0.253089 &   0.319141 &   0.319713 \\
+soft\_RE\_pos  &    0.492350 &    0.399911 &   0.386464 &    0.971101 &       0.931759 &        0.891310 &             1.210807 &    0.998519 &    0.959177 &   0.958894 &    0.439765 &   0.386251 &   0.425561 &   0.359201 \\
+soft\_F1\_pos  &    0.772365 &    0.573289 &   0.425787 &    1.079241 &       1.330719 &        1.064803 &             1.477184 &    1.012704 &    1.251701 &   1.012011 &    0.638730 &   0.559495 &   0.705401 &   0.492814 \\
+soft\_PR\_neg  &    0.319624 &    0.425806 &   0.252794 &    0.678333 &       0.959711 &        0.878957 &             0.985530 &    0.679280 &    0.959330 &   0.785211 &    0.359589 &   0.279153 &   0.425723 &   0.252899 \\
+soft\_RE\_neg  &    0.386413 &    0.253534 &   0.518970 &    1.012707 &       0.932411 &        1.078221 &             1.251758 &    1.278543 &    0.825609 &   0.932185 &    0.599257 &   0.425173 &   0.399659 &   0.492891 \\
+soft\_F1\_neg  &    0.559340 &    0.359859 &   0.493339 &    1.397934 &       1.384093 &        1.131398 &             1.145077 &    1.172711 &    1.144902 &   1.105118 &    0.612542 &   0.493066 &   0.572929 &   0.532328 \\
+\_soft\_PR\_abs &    0.172459 &    0.213153 &   0.146392 &    0.532961 &       0.599591 &        0.612726 &             0.706304 &    0.666005 &    0.812709 &   0.786254 &    0.213076 &   0.213292 &   0.213515 &   0.279115 \\
+\_soft\_RE\_abs &    0.251958 &    0.252186 &   0.145439 &    0.813192 &       0.705868 &        0.706708 &             0.680132 &    0.851774 &    0.706065 &   0.719509 &    0.186872 &   0.212701 &   0.319592 &   0.213235 \\
+\_soft\_F1\_abs &    0.385675 &    0.332734 &   0.319080 &    0.998240 &       0.785570 &        0.720142 &             1.131732 &    0.985362 &    0.984497 &   0.959107 &    0.399195 &   0.279856 &   0.319363 &   0.386044 \\
+\_soft\_PR\_pos &    0.319990 &    0.146472 &   0.251640 &    0.638291 &       0.598984 &        0.651395 &             0.573177 &    0.813115 &    0.639642 &   0.638882 &    0.212736 &   0.172739 &   0.146672 &   0.306676 \\
+\_soft\_RE\_pos &    0.146354 &    0.213133 &   0.185779 &    0.678924 &       0.479202 &        0.704931 &             0.812127 &    0.785322 &    0.705547 &   0.559196 &    0.079441 &   0.212154 &   0.146112 &   0.346518 \\
+\_soft\_F1\_pos &    0.279220 &    0.253191 &   0.279369 &    0.785348 &       0.718587 &        0.852725 &             0.759350 &    0.772880 &    0.639159 &   0.851247 &    0.359780 &   0.252562 &   0.385927 &   0.213350 \\
+\_soft\_PR\_neg &    0.212822 &    0.212091 &   0.279837 &    0.494137 &       0.571645 &        0.426381 &             0.598612 &    0.639935 &    0.706822 &   0.771936 &    0.146478 &   0.213099 &   0.253007 &   0.212542 \\
+\_soft\_RE\_neg &    0.186078 &    0.146252 &   0.173066 &    0.679452 &       0.492388 &        0.573406 &             0.597274 &    0.706040 &    0.599184 &   0.705773 &    0.359678 &   0.280253 &   0.212599 &   0.252126 \\
+\_soft\_F1\_neg &    0.185989 &    0.319195 &   0.252314 &    0.638914 &       0.785917 &        0.719023 &             0.638965 &    0.747747 &    0.919135 &   0.745951 &    0.319773 &   0.292934 &   0.319408 &   0.319557 \\
+Atten\_C      &    0.465755 &    0.399256 &   0.320126 &    0.826461 &       0.811469 &        0.812343 &             0.785894 &    0.918271 &    1.145220 &   0.985222 &    0.359440 &   0.467621 &   0.425886 &   0.453062 \\
+Atten\_NC     &    0.386600 &    0.346235 &   0.293175 &    0.719891 &       0.746094 &        0.772349 &             0.758483 &    0.546134 &    0.837984 &   0.958083 &    0.279404 &   0.359017 &   0.359615 &   0.280031 \\
+cpa!=        &    1.078291 &    0.826273 &   0.919463 &    3.756227 &       3.901707 &        4.290015 &             4.449120 &    3.927536 &    4.621487 &   4.475985 &    1.024504 &   1.065385 &   0.972455 &   1.318779 \\
+cpl!=        &    0.464802 &    0.466337 &   0.466140 &    1.449757 &       1.318197 &        1.451283 &             1.650995 &    1.105890 &    1.624880 &   1.398465 &    0.639346 &   0.598520 &   0.466817 &   0.639394 \\
+cor!=        &    1.637891 &    1.531162 &   1.478205 &    5.287333 &       5.381025 &        5.899499 &             5.715609 &    5.340481 &    6.086213 &   6.059558 &    1.545540 &   1.425651 &   1.665214 &   1.706572 \\
+cpa>         &    1.039200 &    1.038793 &   0.866776 &    3.729153 &       3.422184 &        3.582907 &             3.675572 &    3.955723 &    3.236945 &   3.462187 &    1.252244 &   0.998096 &   1.144753 &   1.089811 \\
+cpl>         &    0.466483 &    0.465701 &   0.466277 &    1.212037 &       1.037998 &        1.131821 &             1.104641 &    1.184982 &    1.065741 &   1.079874 &    0.639194 &   0.599016 &   0.598571 &   0.599286 \\
+cor>         &    1.598002 &    1.531973 &   1.477887 &    4.873123 &       4.847562 &        4.809087 &             4.314210 &    4.927260 &    5.087287 &   4.872945 &    1.771218 &   1.491575 &   1.438227 &   1.558094 \\
+cpa<         &    1.091754 &    0.986115 &   0.785971 &    3.422467 &       2.850091 &        3.209565 &             4.049409 &    3.702339 &    3.008871 &   3.169556 &    1.105652 &   0.852629 &   0.892658 &   1.105019 \\
+cpl<         &    0.532325 &    0.598405 &   0.426019 &    1.105220 &       1.131423 &        1.025060 &             0.972102 &    1.184775 &    1.025178 &   1.104752 &    0.465686 &   0.505737 &   0.532293 &   0.532061 \\
+cor<         &    1.359037 &    1.464494 &   1.278178 &    4.475288 &       4.501136 &        4.461807 &             4.500761 &    4.860811 &    4.528166 &   4.448093 &    1.665659 &   1.558749 &   1.530844 &   1.532173 \\
+cor\_nosign   &    1.558307 &    1.598450 &   1.465400 &    4.566758 &       4.513957 &        4.315866 &             4.381447 &    4.820671 &    4.634523 &   4.940659 &    1.690108 &   1.572145 &   1.464914 &   1.570953 \\
+cor\_sign     &    2.610442 &    3.089650 &   2.636340 &    8.830134 &       8.642766 &        8.444341 &             8.576800 &    8.709618 &    9.655584 &   8.829597 &    3.023119 &   3.116837 &   2.849763 &   2.625322 \\
+\bottomrule
+\end{tabular}
+
+
+(daan-gpu) C:\Users\remib\Downloads\Final resnet\new metrics\resnet>
